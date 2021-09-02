@@ -4,7 +4,7 @@ defmodule Sleipnir.Discord.Consumer do
   alias Nostrum.Api
   alias Sleipnir.Data.DiscordMessages
 
-  @mod_channel_id 511_907_736_938_872_833
+  @mod_channel_id 729_068_932_698_341_509
 
   def start_link do
     Consumer.start_link(__MODULE__)
@@ -16,11 +16,18 @@ defmodule Sleipnir.Discord.Consumer do
 
     case msg.content do
       "ping!" ->
-        Api.create_message(@mod_channel_id, "pong!")
+        Api.create_message(@mod_channel_id,
+          content: "pong!",
+          message_reference: %{message_id: msg.id}
+        )
 
       "report!" ->
         report = DiscordMessages.messages() |> messages_to_string
-        Api.create_message(@mod_channel_id, "Report:\n#{report}")
+
+        Api.create_message(@mod_channel_id,
+          content: "Report:\n#{report}",
+          message_reference: %{message_id: msg.id}
+        )
 
       _ ->
         :noop
