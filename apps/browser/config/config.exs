@@ -1,18 +1,13 @@
-# This file is responsible for configuring your umbrella
-# and **all applications** and their dependencies with the
-# help of the Config module.
+# This file is responsible for configuring your application
+# and its dependencies with the aid of the Mix.Config module.
 #
-# Note that all applications in your umbrella share the
-# same configuration and dependencies, which is why they
-# all use the same configuration file. If you want different
-# configurations or dependencies per app, it is best to
-# move said applications out of the umbrella.
-import Config
+# This configuration file is loaded before any dependency and
+# is restricted to this project.
 
-config :nostrum,
-  token: "",
-  num_shards: :auto
+# General application configuration
+use Mix.Config
 
+# Configures the endpoint
 config :browser, BrowserWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "ezczhHQGlBj5WqOSZfPHfrHXOrC5hDQ8hWDmTY0qQqd6SWciHviIXaaVfYkfYXMw",

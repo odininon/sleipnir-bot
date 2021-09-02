@@ -15,7 +15,8 @@
 		"jakebecker.elixir-ls",
 		"mindaro.mindaro",
 		"visualstudioexptteam.vscodeintellicode",
-		"tabnine.tabnine-vscode"
+		"tabnine.tabnine-vscode",
+		"ms-azuretools.vscode-docker"
 	]
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
