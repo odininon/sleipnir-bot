@@ -9,10 +9,6 @@
 # move said applications out of the umbrella.
 import Config
 
-config :nostrum,
-  token: "",
-  num_shards: :auto
-
 config :browser, BrowserWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "ezczhHQGlBj5WqOSZfPHfrHXOrC5hDQ8hWDmTY0qQqd6SWciHviIXaaVfYkfYXMw",

@@ -1,0 +1,5 @@
+_build/
+.devcontainer/
+.elixir_ls/
+.vscode/
+apps/browser/assets/node_modules/
