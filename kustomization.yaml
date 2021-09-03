@@ -1,8 +1,7 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-
 resources:
-  - deployment.yaml
+- deployment.yaml
 images:
-  - name: taemdev.azurecr.io/sleipnir
-    newTag: af602ce532fd931cb162a120e6becd153db7a06a
+- name: taemdev.azurecr.io/sleipnir
+  newTag: f80366da87cb21cc9e32b4a8a38a2c59674e250d
