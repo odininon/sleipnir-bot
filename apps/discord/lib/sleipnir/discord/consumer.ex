@@ -22,7 +22,10 @@ defmodule Sleipnir.Discord.Consumer do
         )
 
       "Am I an idiot?" ->
-        Api.create_reaction(msg.channel_id, msg.id, ":thumbsup:")
+        Api.create_message(@mod_channel_id,
+          content: "yes!",
+          message_reference: %{message_id: msg.id}
+        )
 
       "report!" ->
         report = DiscordMessages.messages() |> messages_to_string
