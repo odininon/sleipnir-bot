@@ -21,12 +21,6 @@ defmodule Sleipnir.Discord.Consumer do
           message_reference: %{message_id: msg.id}
         )
 
-      "Am I an idiot?" ->
-        Api.create_message(@mod_channel_id,
-          content: "yes!",
-          message_reference: %{message_id: msg.id}
-        )
-
       "report!" ->
         report = DiscordMessages.messages() |> messages_to_string
 
@@ -50,8 +44,14 @@ defmodule Sleipnir.Discord.Consumer do
   end
 
   defp messages_to_string(messages) do
-    Enum.map(messages, fn {guild, messages} ->
-      "Guild: #{guild}\nMessages:\n#{messages |> leader_to_string}"
+    Enum.map(messages, fn {guild_id, messages} ->
+      guild_name =
+        case Nostrum.Cache.GuildCache.get(guild_id) do
+          {:ok, guild} -> guild.name
+          {:error, _reason} -> guild_id
+        end
+
+      "Guild: #{guild_name}\nMessages:\n#{messages |> leader_to_string}"
     end)
     |> Enum.join("\n\n")
   end
