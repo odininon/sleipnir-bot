@@ -20,6 +20,9 @@ RUN \
 COPY . /app/
 
 WORKDIR /app
+
+RUN mix do deps.get, deps.compile, compile
+
 RUN mix release discord
 
 FROM elixir:1.12.1-alpine
