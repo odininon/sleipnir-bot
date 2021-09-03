@@ -47,7 +47,6 @@ jobs:
 
       - name: Update Kubernetes resources
         run: |
-          cd kustomize/base
           kustomize edit set image taemdev.azurecr.io/sleipnir:$GITHUB_SHA
           cat kustomization.yaml
 
