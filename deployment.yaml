@@ -24,5 +24,5 @@ spec:
             - name: DISCORD_TOKEN
               valueFrom:
                 secretKeyRef:
-                  name: discord-token
+                  name: discord-token-m9596b58c7
                   key: discord-token
