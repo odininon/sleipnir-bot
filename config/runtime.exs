@@ -1,5 +1,5 @@
 import Config
 
 config :nostrum,
-  token: "",
+  token: System.get_env("DISCORD_TOKEN"),
   num_shards: :auto
