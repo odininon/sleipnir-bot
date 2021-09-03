@@ -21,6 +21,9 @@ defmodule Sleipnir.Discord.Consumer do
           message_reference: %{message_id: msg.id}
         )
 
+      "Am I an idiot?" ->
+        Api.create_reaction(msg.channel_id, msg.id, ":thumbsup:")
+
       "report!" ->
         report = DiscordMessages.messages() |> messages_to_string
 
