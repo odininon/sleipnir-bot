@@ -6,9 +6,9 @@ name: CI
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -28,10 +28,9 @@ jobs:
       - uses: azure/docker-login@v1
         with:
           login-server: taemdev.azurecr.io
-          username: ${{ secrets.ACR_USENAME }}
+          username: ${{ secrets.ACR_USERNAME }}
           password: ${{ secrets.ACR_PASSWORD }}
-          
+
       - run: |
           docker build . -t taemdev.azurecr.io/sleipnir:${{ github.sha }}
           docker push taemdev.azurecr.io/sleipnir:${{ github.sha }}
-    
