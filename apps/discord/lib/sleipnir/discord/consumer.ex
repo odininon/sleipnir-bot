@@ -50,15 +50,13 @@ defmodule Sleipnir.Discord.Consumer do
 
   defp messages_to_string(messages) do
     Enum.map(messages, fn {guild_id, messages} ->
-      messages = messages |> sort_by_count
-
       guild_name =
         case Nostrum.Cache.GuildCache.get(guild_id) do
           {:ok, guild} -> guild.name
           {:error, _reason} -> guild_id
         end
 
-      "Guild: #{guild_name}\nMessages:\n#{messages |> leader_to_string}"
+      "Guild: #{guild_name}\nMessages:\n#{messages |> sort_by_count |> leader_to_string}"
     end)
     |> Enum.join("\n\n")
   end
