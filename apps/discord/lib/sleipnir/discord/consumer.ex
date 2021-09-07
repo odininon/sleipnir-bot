@@ -22,7 +22,7 @@ defmodule Sleipnir.Discord.Consumer do
         )
 
       "report!" ->
-        report = DiscordMessages.messages() |> messages_to_string
+        report = DiscordMessages.messages() |> sort_by_count |> messages_to_string
 
         Api.create_message(@mod_channel_id,
           content: "Report:\n#{report}",
@@ -32,6 +32,10 @@ defmodule Sleipnir.Discord.Consumer do
       _ ->
         :noop
     end
+  end
+
+  defp sort_by_count(messages) do
+    Enum.sort_by messages, & &1.num
   end
 
   def handle_event({:MESSAGE_CREATE, msg, _ws_state}) do
