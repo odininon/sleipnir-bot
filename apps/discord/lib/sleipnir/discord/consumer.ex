@@ -1,5 +1,6 @@
 defmodule Sleipnir.Discord.Consumer do
   use Nostrum.Consumer
+  require Logger
 
   alias Nostrum.Api
   alias Sleipnir.Data.DiscordMessages
@@ -22,7 +23,7 @@ defmodule Sleipnir.Discord.Consumer do
         )
 
       "report!" ->
-        report = DiscordMessages.messages() |> sort_by_count |> messages_to_string
+        report = DiscordMessages.messages() |> messages_to_string
 
         Api.create_message(@mod_channel_id,
           content: "Report:\n#{report}",
@@ -35,7 +36,7 @@ defmodule Sleipnir.Discord.Consumer do
   end
 
   defp sort_by_count(messages) do
-    Enum.sort_by messages, & &1.num
+    messages |> Map.to_list() |> Enum.sort(fn {_k1, val1}, {_k2, val2} -> val1 >= val2 end)
   end
 
   def handle_event({:MESSAGE_CREATE, msg, _ws_state}) do
@@ -49,6 +50,8 @@ defmodule Sleipnir.Discord.Consumer do
 
   defp messages_to_string(messages) do
     Enum.map(messages, fn {guild_id, messages} ->
+      messages = messages |> sort_by_count
+
       guild_name =
         case Nostrum.Cache.GuildCache.get(guild_id) do
           {:ok, guild} -> guild.name
