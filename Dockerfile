@@ -1,4 +1,4 @@
-FROM elixir:1.12.1-alpine AS builder
+FROM elixir:1.13.4-alpine AS builder
 
 ARG MIX_ENV=prod
 ARG PHOENIX_SUBDIR=apps/browser
@@ -25,7 +25,7 @@ RUN mix do deps.get, deps.compile, compile
 
 RUN mix release discord
 
-FROM elixir:1.12.1-alpine
+FROM elixir:1.13.4-alpine
 
 RUN apk update && \
     apk add --no-cache tini && \

@@ -9,20 +9,11 @@
 # move said applications out of the umbrella.
 import Config
 
-config :browser, BrowserWeb.Endpoint,
-  url: [host: "localhost"],
-  secret_key_base: "ezczhHQGlBj5WqOSZfPHfrHXOrC5hDQ8hWDmTY0qQqd6SWciHviIXaaVfYkfYXMw",
-  render_errors: [view: BrowserWeb.ErrorView, accepts: ~w(html json), layout: false],
-  pubsub_server: Browser.PubSub,
-  live_view: [signing_salt: "JJNJ0sAT"]
-
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
-  metadata: [:request_id]
-
-# Use Jason for JSON parsing in Phoenix
-config :phoenix, :json_library, Jason
+  metadata: [:request_id],
+  level: :warn
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

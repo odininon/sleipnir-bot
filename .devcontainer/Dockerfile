@@ -3,7 +3,7 @@
 # Licensed under the MIT License. See https://go.microsoft.com/fwlink/?linkid=2090316 for license information.
 #-------------------------------------------------------------------------------------------------------------
 
-FROM elixir:1.12.2
+FROM elixir:1.13.4
 
 RUN mix local.hex --force \
   && mix archive.install --force hex phx_new 1.5.12 \

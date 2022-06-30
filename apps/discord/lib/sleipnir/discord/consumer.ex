@@ -5,7 +5,7 @@ defmodule Sleipnir.Discord.Consumer do
   alias Nostrum.Api
   alias Sleipnir.Data.DiscordMessages
 
-  @mod_channel_id 729_068_932_698_341_509
+  @mod_channel_id 729_068_885_474_672_740
 
   def start_link do
     Consumer.start_link(__MODULE__)
