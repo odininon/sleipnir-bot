@@ -4,4 +4,4 @@ resources:
 - deployment.yaml
 images:
 - name: taemdev.azurecr.io/sleipnir
-  newTag: 5f8f7af9e96d53812d831784e3f083c041458c38
+  newTag: 9adf8fff5c0d3abc02f1a1781be2901d438661c9
